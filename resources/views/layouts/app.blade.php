@@ -18,7 +18,7 @@
 @if (\Request::is('rtl'))
   <html dir="rtl" lang="ar">
 @else
-  <html lang="en" >
+  <html lang="pt-br" >
 @endif
 
 <head>
@@ -69,8 +69,10 @@
   <script src="../assets/js/plugins/smooth-scrollbar.min.js"></script>
   <script src="../assets/js/plugins/fullcalendar.min.js"></script>
   <script src="../assets/js/plugins/chartjs.min.js"></script>
+  <script src="/assets/js/plugins/flatpickr.min.js"></script>
   @stack('rtl')
   @stack('dashboard')
+  @stack('js')
   <script>
     var win = navigator.platform.indexOf('Win') > -1;
     if (win && document.querySelector('#sidenav-scrollbar')) {

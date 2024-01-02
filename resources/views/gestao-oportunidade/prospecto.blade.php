@@ -47,12 +47,12 @@
                     <input id="valor_estimado" type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
                 </div>
             </div>
-            <div class="row">
+            <div class="row mt-2">
                 <div class="col-md-3">
                     <label for="prob_fechamento">Probabilidade de fechamento:</label>
                     <input id="prob_fechamento" type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
                 </div>
-                <div class="col-md-4">
+                <div class="col-md-3">
                     <label for="proximo_passo">Proximo passo:</label>
                     <input id="proximo_passo" type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
                 </div>

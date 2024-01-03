@@ -56,8 +56,11 @@
                     <label for="proximo_passo">Proximo passo:</label>
                     <input id="proximo_passo" type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
                 </div>
+                <div class="col-md-3">
+                    <label for="submit">  </label>
+                    <button type="submit" id="submit" class="btn btn-info btn-lg align-itens-end">Confirmar cadastro</button>
+                </div>
             </div>
-
         </form>
     </div>
 </div>

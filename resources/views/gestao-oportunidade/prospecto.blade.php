@@ -11,6 +11,7 @@
     <h5 class="mb-3 mt-3">Dados do Cliente:</h5>
     <div class="container form-group">
         <form>
+            <div class="card p-3">
             <div class="row">
                 <div class="col-md-3">
                     <label for="nome_cliente">Nome do Cliente:</label>
@@ -59,6 +60,7 @@
                 <div class="col-md-3 mt-4">
                     <button type="submit" class="btn btn-info btn-lg align-itens-end">Confirmar cadastro</button>
                 </div>
+            </div>
             </div>
         </form>
     </div>

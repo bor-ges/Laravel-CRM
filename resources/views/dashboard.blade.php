@@ -11,13 +11,13 @@
               <div class="numbers">
                 <p class="text-sm mb-0 text-capitalize font-weight-bold">Total de contratos</p>
                 <h5 class="font-weight-bolder mb-0">
-                  $53,000
+                  6
                   <span class="text-success text-sm font-weight-bolder">+55%</span>
                 </h5>
               </div>
             </div>
             <div class="col-4 text-end">
-              <div class="icon icon-shape bg-gradient-primary shadow text-center border-radius-md">
+              <div class="icon icon-shape bg-gradient-success shadow text-center border-radius-md">
                 <i class="ni ni-money-coins text-lg opacity-10" aria-hidden="true"></i>
               </div>
             </div>
@@ -33,13 +33,13 @@
               <div class="numbers">
                 <p class="text-sm mb-0 text-capitalize font-weight-bold">Captações de Hoje</p>
                 <h5 class="font-weight-bolder mb-0">
-                  2,300
+                  25
                   <span class="text-success text-sm font-weight-bolder">+3%</span>
                 </h5>
               </div>
             </div>
             <div class="col-4 text-end">
-              <div class="icon icon-shape bg-gradient-primary shadow text-center border-radius-md">
+              <div class="icon icon-shape bg-gradient-success shadow text-center border-radius-md">
                 <i class="ni ni-world text-lg opacity-10" aria-hidden="true"></i>
               </div>
             </div>
@@ -55,13 +55,13 @@
               <div class="numbers">
                 <p class="text-sm mb-0 text-capitalize font-weight-bold">Novos Clientes</p>
                 <h5 class="font-weight-bolder mb-0">
-                  +3,462
+                  +149
                   <span class="text-danger text-sm font-weight-bolder">-2%</span>
                 </h5>
               </div>
             </div>
             <div class="col-4 text-end">
-              <div class="icon icon-shape bg-gradient-primary shadow text-center border-radius-md">
+              <div class="icon icon-shape bg-gradient-success shadow text-center border-radius-md">
                 <i class="ni ni-paper-diploma text-lg opacity-10" aria-hidden="true"></i>
               </div>
             </div>
@@ -77,13 +77,13 @@
               <div class="numbers">
                 <p class="text-sm mb-0 text-capitalize font-weight-bold">Conversões </p>
                 <h5 class="font-weight-bolder mb-0">
-                  $103,430
+                  4
                   <span class="text-success text-sm font-weight-bolder">+5%</span>
                 </h5>
               </div>
             </div>
             <div class="col-4 text-end">
-              <div class="icon icon-shape bg-gradient-primary shadow text-center border-radius-md">
+              <div class="icon icon-shape bg-gradient-success shadow text-center border-radius-md">
                 <i class="ni ni-cart text-lg opacity-10" aria-hidden="true"></i>
               </div>
             </div>
@@ -232,10 +232,10 @@
         <div class="card-header pb-0">
           <div class="row">
             <div class="col-lg-6 col-7">
-              <h6>Projetos em andamento</h6>
+              <h6>Oportunidades de negócio</h6>
               <p class="text-sm mb-0">
                 <i class="fa fa-check text-info" aria-hidden="true"></i>
-                <span class="font-weight-bold ms-1">3 feitos</span> este mês
+                <span class="font-weight-bold ms-1">2 concluídos</span> este mês
               </p>
             </div>
             <div class="col-lg-6 col-5 my-auto text-end">

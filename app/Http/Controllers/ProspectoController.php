@@ -22,9 +22,9 @@ class ProspectoController extends Controller
     /**
      * Show the form for creating a new resource.
      */
-    public function create()
+    public function create(Prospecto $prospecto)
     {
-        return view('gestao-oportunidade.prospecto');
+        return view('gestao-oportunidade.prospecto',compact('prospecto'));
     }
 
     /**
@@ -67,7 +67,7 @@ class ProspectoController extends Controller
      */
     public function show(Prospecto $prospecto)
     {
-        //
+        return view('gestao-oportunidade.prospecto', compact('prospecto'));
     }
 
     /**

@@ -9,6 +9,7 @@ use App\Http\Controllers\SessionsController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Password;
 use Illuminate\Support\Facades\Route;
+use \App\Http\Controllers\ProspectoController;
 
 /*
 |--------------------------------------------------------------------------
@@ -25,6 +26,8 @@ use Illuminate\Support\Facades\Route;
 Route::group(['middleware' => 'auth'], function () {
 
 });
+    Route::resource('prospecto', ProspectoController::class);
+
     Route::get('/prospecto',function (){
       return view('gestao-oportunidade.prospecto');
     });

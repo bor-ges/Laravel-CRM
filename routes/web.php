@@ -28,13 +28,6 @@ Route::group(['middleware' => 'auth'], function () {
 });
     Route::resource('prospecto', ProspectoController::class);
 
-    Route::get('/prospecto',function (){
-      return view('gestao-oportunidade.prospecto');
-    });
-    Route::get('/abordagem',function (){
-      return view('gestao-oportunidade.abordagem');
-    });
-
     Route::get('/', [HomeController::class, 'home']);
 	Route::get('dashboard', function () {
         return view('dashboard');

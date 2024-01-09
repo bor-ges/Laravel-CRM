@@ -9,7 +9,7 @@ class Prospecto extends Model
 {
     use HasFactory;
     protected $fillable = [
-        'none_cliente',
+        'nome_cliente',
         'conhecimento',
         'origem',
         'nome_oportunidade',

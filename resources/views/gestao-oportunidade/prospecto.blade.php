@@ -12,6 +12,7 @@
     <div class="container form-group">
         <form action="{{ route('prospecto.store') }}" method="POST" enctype="multipart/form-data">
             @csrf
+            @method("POST")
             <div class="card p-3">
             <div class="row">
                 <div class="col-md-3">

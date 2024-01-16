@@ -259,7 +259,7 @@
                 <tr>
                   <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Clientes</th>
                   <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Participantes</th>
-                  <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Budget</th>
+                  <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Faturamento</th>
                   <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Progresso</th>
                 </tr>
               </thead>

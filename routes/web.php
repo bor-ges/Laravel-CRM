@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AbordagemController;
 use App\Http\Controllers\ChangePasswordController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\InfoUserController;
@@ -27,6 +28,7 @@ Route::group(['middleware' => 'auth'], function () {
 
 });
     Route::resource('prospecto', ProspectoController::class);
+    Route::resource('abordagem', AbordagemController::class);
 
     Route::get('/', [HomeController::class, 'home']);
 	Route::get('dashboard', function () {

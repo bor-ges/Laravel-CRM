@@ -28,6 +28,7 @@ Route::group(['middleware' => 'auth'], function () {
 
 });
     Route::resource('prospecto', ProspectoController::class);
+
     Route::resource('abordagem', AbordagemController::class);
 
     Route::get('/', [HomeController::class, 'home']);

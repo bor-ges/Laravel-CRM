@@ -59,7 +59,7 @@
                     <label for="proximo_passo">Proximo passo:</label>
                     <input id="proximo_passo" value="{{$prospecto->proximo}}" type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
                 </div>
-                <div class="col-md-3 mt-4">
+                <div class="col-md-4 mt-4">
                     <button type="submit" class="btn btn-info btn-lg align-itens-end">Confirmar cadastro</button>
                 </div>
             </div>

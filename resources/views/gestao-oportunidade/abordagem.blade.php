@@ -19,7 +19,7 @@
             </div>
 
             <div class="col-md-3 w-auto">
-                <button type="button" class="btn btn-success">Adicionar novo item</button>
+                <a href="abordagem/create" type="button" class="btn btn-success">Adicionar novo item</a>
             </div>
 
         </div>

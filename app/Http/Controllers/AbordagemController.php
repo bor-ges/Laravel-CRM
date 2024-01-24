@@ -20,7 +20,7 @@ class AbordagemController extends Controller
      */
     public function create()
     {
-        //
+        return view("gestao-oportunidade.abordagem-create");
     }
 
     /**

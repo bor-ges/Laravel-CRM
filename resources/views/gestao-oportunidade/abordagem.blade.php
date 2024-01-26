@@ -95,8 +95,11 @@
                                                 </button>
                                             </div>
                                             <div class="modal-body">
-                                                <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. Separated they live in Bookmarksgrove right at the coast of the Semantics, a large language ocean.</p>
-                                                <p>A small river named Duden flows by their place and supplies it with the necessary regelialia. It is a paradisematic country, in which roasted parts of sentences fly into your mouth.</p>
+                                                <!-- Adicionando campos no corpo do modal -->
+                                                <p><strong>Nome:</strong> teste</p>
+                                                <p><strong>Tipo:</strong> teste</p>
+                                                <p><strong>Data de Realização:</strong> teste</p>
+                                                <p><strong>Descrição:</strong> teste</p>
                                             </div>
                                             <div class="modal-footer">
                                                 <button type="button" class="btn btn-danger  ml-auto" data-bs-dismiss="modal">Fechar</button>
@@ -123,3 +126,41 @@
     </script>
 @endpush
 @endsection
+
+
+
+{{--@foreach ($suaColecaoDeDados as $item)--}}
+{{--    <tr>--}}
+{{--        <!-- ... Suas células de tabela ... -->--}}
+{{--        <td class="align-middle">--}}
+{{--            <!-- Link "Informações" com atributos data-bs-toggle e data-bs-target -->--}}
+{{--            <a data-bs-toggle="modal" data-bs-target="#modal-{{ $item->id }}" class="text-secondary font-weight-bold text-xs" data-toggle="tooltip" data-original-title="Edit user">--}}
+{{--                Informações--}}
+{{--            </a>--}}
+{{--        </td>--}}
+{{--    </tr>--}}
+
+{{--    <!-- Modal correspondente a esta entrada do loop -->--}}
+{{--    <div class="modal fade" id="modal-{{ $item->id }}" tabindex="-1" role="dialog" aria-labelledby="modal-title-{{ $item->id }}" aria-hidden="true">--}}
+{{--        <div class="modal-dialog modal- modal-dialog-centered modal-" role="document">--}}
+{{--            <div class="modal-content">--}}
+{{--                <div class="modal-header">--}}
+{{--                    <h6 class="modal-title" id="modal-title-default">Informações</h6>--}}
+{{--                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">--}}
+{{--                        <span aria-hidden="true">×</span>--}}
+{{--                    </button>--}}
+{{--                </div>--}}
+{{--                <div class="modal-body">--}}
+{{--                    <!-- Adicionando campos no corpo do modal -->--}}
+{{--                    <p><strong>Nome:</strong> {{ $item->nome }}</p>--}}
+{{--                    <p><strong>Tipo:</strong> {{ $item->tipo }}</p>--}}
+{{--                    <p><strong>Descrição:</strong> {{ $item->descricao }}</p>--}}
+{{--                    <p><strong>Data de Realização:</strong> {{ $item->dataRealizacao }}</p>--}}
+{{--                </div>--}}
+{{--                <div class="modal-footer">--}}
+{{--                    <button type="button" class="btn btn-danger ml-auto" data-bs-dismiss="modal">Fechar</button>--}}
+{{--                </div>--}}
+{{--            </div>--}}
+{{--        </div>--}}
+{{--    </div>--}}
+{{--@endforeach--}}

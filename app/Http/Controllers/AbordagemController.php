@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\Abordagem;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+use Carbon\Carbon;
 
 class AbordagemController extends Controller
 {
@@ -28,7 +30,24 @@ class AbordagemController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validated = $request->validate([
+            'nome_abordagem' => 'required|max:4294967295',
+            'tipo_abordagem' => 'required|max:4294967295',
+            'data_abordagem' => 'required|numeric|max:255',
+
+
+        ]);
+
+        $abordagem = new Abordagem();
+
+        $abordagem->nome_abordagem = $validated['nome_abordagem'];
+        $abordagem->tipo_abordagem = $validated['tipo_abordagem'];
+        $abordagem->data_abordagem = Carbon::parse($validated['data_abordagem'])->format('Y/m/d');
+
+
+        $abordagem->save();
+
+        return view("gestao-oportunidade.abordagem");
     }
 
     /**

@@ -52,7 +52,7 @@ class ProspectoController extends Controller
         $prospecto->origem = $validated['origem'];
         $prospecto->nome_oportunidade = $validated['nome_oportunidade'];
         $prospecto->tipo_oportunidade = $validated['tipo_oportunidade'];
-        $prospecto = Carbon::parse($validated['prospecto'])->format('Y/m/d');
+        $prospecto->data = Carbon::parse($validated['data'])->format('Y/m/d');
         $prospecto->estimado = $validated['estimado'];
         $prospecto->probabilidade = $validated['probabilidade'];
         $prospecto->proximo = $validated['proximo'];

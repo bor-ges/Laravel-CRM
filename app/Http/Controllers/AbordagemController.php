@@ -34,8 +34,6 @@ class AbordagemController extends Controller
             'nome_abordagem' => 'required|max:4294967295',
             'tipo_abordagem' => 'required|max:4294967295',
             'data_abordagem' => 'required|numeric|max:255',
-
-
         ]);
 
         $abordagem = new Abordagem();

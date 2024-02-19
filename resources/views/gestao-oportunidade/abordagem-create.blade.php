@@ -7,26 +7,25 @@
     <div class="form-container">
         <form action="{{ route('abordagem.store') }}" method="POST" enctype="multipart/form-data">
         @csrf
-        @method("POST")
             <div class="card p-3">
                 <div class="row">
                     <div class="col-md-3">
                         <label for="nome_cliente">Nome para a abordagem:</label>
-                        <input id="nome_cliente" value="" type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+                        <input id="nome_cliente" name="nome_abordagem" value="{{$abordagem->}}" type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
                     </div>
                     <div class="col-md-3">
                         <label for="exampleFormControlSelect1">Tipo de abordagem:</label>
                         <select class="form-control" id="exampleFormControlSelect1">
-                            <option>1</option>
-                            <option>2</option>
-                            <option>3</option>
-                            <option>4</option>
-                            <option>5</option>
+                            <option name="tipo_abordagem">1</option>
+                            <option name="tipo_abordagem">2</option>
+                            <option name="tipo_abordagem">3</option>
+                            <option name="tipo_abordagem">4</option>
+                            <option name="tipo_abordagem">5</option>
                         </select>
                     </div>
                     <div class="col-md-3">
                         <label for="data">Data de realização:</label>
-                        <input id="data" class="form-control datepicker" placeholder="Selecione a data" type="text" onfocus="focused(this)" onfocusout="defocused(this)">
+                        <input id="data" name="data_abordagem" class="form-control datepicker" placeholder="Selecione a data" type="text" onfocus="focused(this)" onfocusout="defocused(this)">
                     </div>
                 </div>
                 <div class="row">

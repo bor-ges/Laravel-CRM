@@ -26,7 +26,10 @@ use \App\Http\Controllers\ProspectoController;
 
 Route::group(['middleware' => 'auth'], function () {
 
-});
+    Route::get('funil', function () {
+        return view('gestao-oportunidade.funil');
+    });
+
     Route::resource('prospecto', ProspectoController::class);
 
     Route::resource('abordagem', AbordagemController::class);
@@ -74,6 +77,7 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/login', function () {
         return view('dashboard');
     })->name('sign-up');
+});
 
 
 

@@ -12,12 +12,13 @@
         "laravel/tinker": "^2.6"
     },
     "require-dev": {
-        "spatie/laravel-ignition": "^2.0",
         "fakerphp/faker": "^1.17",
         "laravel/sail": "^1.12",
+        "lucascudo/laravel-pt-br-localization": "^2.0",
         "mockery/mockery": "^1.4.2",
         "nunomaduro/collision": "^7.0",
-        "phpunit/phpunit": "^10.0"
+        "phpunit/phpunit": "^10.0",
+        "spatie/laravel-ignition": "^2.0"
     },
     "autoload": {
         "psr-4": {

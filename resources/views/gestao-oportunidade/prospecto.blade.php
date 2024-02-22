@@ -6,13 +6,18 @@
     <div class="h4">Cadastrar nova oportunidade</div>
     <hr class="border-bottom border-3 border-dark">
 </div>
-
+@if ($errors->any())
+   <ul>
+        @foreach ($errors->all() as $error)
+            <li style="color:red">{{ $error }}</li>
+        @endforeach
+   </ul>
+@endif
 <div class="row">
     <h5 class="mb-3 mt-3">Dados do Cliente:</h5>
     <div class="container form-group">
-        <form action="{{ route('prospecto.store') }}" method="POST" enctype="multipart/form-data">
+        <form action="{{ route('prospecto.store') }}" method="POST">
             @csrf
-            @method("POST")
             <div class="card p-3">
             <div class="row">
                 <div class="col-md-3">

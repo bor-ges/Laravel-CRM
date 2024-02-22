@@ -38,12 +38,12 @@ class ProspectoController extends Controller
             'origem' => 'required|max:4294967295',
             'nome_oportunidade' => 'required|max:4294967295',
             'tipo_oportunidade' => 'required|max:4294967295',
-            'data' => 'required|numeric|max:255',
-            'estimado' => 'required|numeric|max:255',
+            'data' => 'required|date|max:255',
+            'estimado' => 'required|numeric',
             'probabilidade' => 'required|max:4294967295',
             'proximo' => 'required|max:4294967295',
-
         ]);
+//        dd($request->all());
 
         $prospecto = new Prospecto();
 

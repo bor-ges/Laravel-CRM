@@ -1,99 +1,115 @@
 @extends('layouts.user_type.auth')
 @section('content')
     <div class="container">
-        <h1>Kanban Board</h1>
+    <div class="row">
+        <div class="h4">Quadro de vendas</div>
+        <hr class="border-bottom border-3 border-dark">
+    </div>
+        <div class="row">
+            <div class="container">
+                <div class="col-md-3">
+                    <button type="button" class="btn btn-info" id="add-card">Adicionar novo card</button>
+                </div>
+            </div>
+        </div>
         <div class="row">
             <div class="col-md-4">
-                <div class="card">
+                <div class="card kanban-column" data-column-id="to-do">
                     <div class="card-header">
-                        <h3>A Fazer</h3>
+                        <h4>Em negociação</h4>
                     </div>
                     <div class="card-body">
                         <ul class="list-group" id="to-do">
-                            <li class="list-group-item">Criar nova tarefa</li>
-                            <li class="list-group-item">Enviar email para cliente</li>
-                            <li class="list-group-item">Desenvolver nova funcionalidade</li>
                         </ul>
                     </div>
                 </div>
             </div>
             <div class="col-md-4">
-                <div class="card">
+                <div class="card kanban-column" data-column-id="in-progress">
                     <div class="card-header">
-                        <h3>Em Andamento</h3>
+                        <h4>Aguardando proposta</h4>
                     </div>
                     <div class="card-body">
                         <ul class="list-group" id="in-progress">
-                            <li class="list-group-item">Reunir com equipe</li>
-                            <li class="list-group-item">Testar nova funcionalidade</li>
-                            <li class="list-group-item">Criar documentação</li>
                         </ul>
                     </div>
                 </div>
             </div>
             <div class="col-md-4">
-                <div class="card">
+                <div class="card kanban-column" data-column-id="done">
                     <div class="card-header">
-                        <h3>Concluído</h3>
+                        <h4>Finalizada</h4>
                     </div>
                     <div class="card-body">
                         <ul class="list-group" id="done">
-                            <li class="list-group-item">Tarefa finalizada</li>
-                            <li class="list-group-item">Email enviado</li>
-                            <li class="list-group-item">Funcionalidade desenvolvida</li>
                         </ul>
                     </div>
                 </div>
             </div>
         </div>
-        <br>
-        <button type="button" class="btn btn-primary" id="add-card" onclick="addNewCard()">Adicionar novo card</button>
     </div>
-@push('js')
-    <script>
-    $(document).ready(function() {
+    @push('js')
+        <script>
+            // Define template for individual card components
+            const cardTemplate = (title, id) => `
+            <li class="list-group-item kanban-card" data-card-id="<span class="math-inline">\{id\}"\>
+<span class\="card\-title"\></span>{title}</span>
+                <button type="button" class="btn btn-sm btn-danger float-right remove-card">Excluir</button>
+            </li>`;
 
-    // Função para arrastar e soltar cards
+            // Function to add new cards
+            $("#add-card").click(function() {
+                var title = prompt("Digite o título do novo card:");
+                if (title) {
+                    // Generate unique card ID
+                    const cardId = Math.random().toString(36).substring(2, 15);
 
-        $(".list-group").sortable({
-            connectWith: ".list-group",
-            update: function(event, ui) {
-                // Atualizar status da tarefa no servidor (opcional)
-            }
-        });
+                        // Create card element using template
+                    const cardElement = cardTemplate(title, cardId);
 
-    // $(".list-group").sortable({
-    // connectWith: ".list-group",
-    // update: function(event, ui) {
-    // // Atualizar status da tarefa no servidor (opcional)
-    // }
-    // });
+                    // Add card to the first column (To-Do) by default
+                    $("#to-do").append(cardElement);
 
-    // Função para adicionar novo card
-    // $("#add-card").click(function() {
-    // var title = prompt("Digite o título do novo card:");
-    // if (title) {
-    // var card = "<li class=\"list-group-item\">" + title + "</li>";
-    // $("#to-do").append(card);
-    // }
-    // });
+                    // Enable drag-and-drop for the new card
+                    $('.kanban-card').draggable({
+                        revert: true,
+                        containment: '.kanban-column',
+                        appendTo: '.kanban-column',
+                        helper: 'clone',
+                        start: function(event, ui) {
+                            // Store original column ID before dragging
+                            ui.helper.data('original-column', $(this).closest('.kanban-column').data('column-id'));
+                        },
+                        stop: function(event, ui) {
+                            const droppedColumn = $(ui.helper).closest('.kanban-column');
+                            const newColumnId = droppedColumn.data('column-id');
 
-    });
+                            // Update card status on server based on new column (optional)
+                            // $.ajax({
+                            //     url: '/update-task-status',
+                            //     data: {
+                            //         cardId: $(this).data('card-id'),
+                            //         newStatus: newColumnId
+                            //     }
+                            // });
+                        }
+                    });
 
-    function addNewCard() {
-        var title = prompt("Digite o título do novo card:");
-        if (title) {
-            var card = "<li class=\"list-group-item\">" + title + "</li>";
-            $("#to-do").append(card);
-            // Habilitar funcionalidade de arrastar para o novo card
-            $("#to-do li:last-child").sortable({
-                connectWith: ".list-group",
-                update: function(event, ui) {
-                    // Atualizar status da tarefa no servidor (opcional)
+                    // Enable card removal
+                    $('.remove-card').click(function() {
+                        $(this).closest('.kanban-card').remove();
+
+                        // Update card data on server (optional)
+                        // $.ajax({
+                        //     url: '/delete-task',
+                        //     data: {
+                        //         cardId: $(this).data('card-id')
+                        //     }
+                        // });
+                    });
                 }
             });
-        }
-    }
-    </script>
+
+            // Initialize draggable behavior for existing
 @endpush
 @endsection

@@ -14,7 +14,7 @@ class ProspectoController extends Controller
      */
     public function index()
     {
-        $prospecto = DB::table('prospecto')->get();
+        $prospecto = DB::table('prospectos')->get();
 
         return view('gestao-oportunidade.prospecto', compact('prospecto'));
     }
@@ -81,7 +81,7 @@ class ProspectoController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Prospecto $prospecto): \Illuminate\Http\RedirectResponse
+    public function update(Request $request, Prospecto $prospecto)
     {
         $validated = $request->validate([
             'nome_cliente' => 'required|max:4294967295',
@@ -89,7 +89,7 @@ class ProspectoController extends Controller
             'origem' => 'required|max:4294967295',
             'nome_oportunidade' => 'required|max:4294967295',
             'tipo_oportunidade' => 'required|max:4294967295',
-            'data' => 'required|numeric|max:255',
+            'data' => 'required|date|max:255',
             'estimado' => 'required|numeric|max:255',
             'probabilidade' => 'required|max:4294967295',
             'proximo' => 'required|max:4294967295',
@@ -101,7 +101,7 @@ class ProspectoController extends Controller
         $prospecto->origem = $validated['origem'];
         $prospecto->nome_oportunidade = $validated['nome_oportunidade'];
         $prospecto->tipo_oportunidade = $validated['tipo_oportunidade'];
-        $prospecto->data = $validated['data'];
+        $prospecto->data = Carbon::parse($validated['data'])->format('Y/m/d');
         $prospecto->estimado = $validated['estimado'];
         $prospecto->probabilidade = $validated['probabilidade'];
         $prospecto->proximo = $validated['proximo'];

@@ -22,12 +22,12 @@
                     </div>
                     <div class="col-md-3">
                         <label for="tipo">Tipo de abordagem:</label>
-                        <select class="form-control" id="tipo">
-                            <option name="tipo_abordagem" value="{{$abordagem->tipo_abordagem}}">1</option>
-                            <option name="tipo_abordagem" value="{{$abordagem->tipo_abordagem}}">2</option>
-                            <option name="tipo_abordagem" value="{{$abordagem->tipo_abordagem}}">3</option>
-                            <option name="tipo_abordagem" value="{{$abordagem->tipo_abordagem}}">4</option>
-                            <option name="tipo_abordagem" value="{{$abordagem->tipo_abordagem}}">5</option>
+                        <select class="form-control" id="tipo" name="tipo_abordagem">
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5</option>
                         </select>
                     </div>
                     <div class="col-md-3">

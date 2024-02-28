@@ -14,7 +14,7 @@ class AbordagemController extends Controller
      */
     public function index()
     {
-        $abordagem = DB::table('abordagens')->get();
+        $abordagem = DB::table('abordagem')->get();
         return view("gestao-oportunidade.abordagem", compact('abordagem'));
     }
 
@@ -37,7 +37,7 @@ class AbordagemController extends Controller
             'data_abordagem' => 'required|date|max:255',
             'descricao' => 'required|max:4294967295',
         ]);
-        dd($request->all());
+//        dd($request->all());
 
         $abordagem = new Abordagem();
 

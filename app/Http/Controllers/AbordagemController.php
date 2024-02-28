@@ -34,7 +34,7 @@ class AbordagemController extends Controller
         $validated = $request->validate([
             'nome_abordagem' => 'required|max:4294967295',
             'tipo_abordagem' => 'required|max:4294967295',
-            'data_abordagem' => 'required|numeric|max:255',
+            'data_abordagem' => 'required|date|max:255',
             'descricao' => 'required|max:4294967295',
         ]);
         dd($request->all());

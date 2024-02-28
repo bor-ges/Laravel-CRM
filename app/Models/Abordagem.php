@@ -11,6 +11,7 @@ class Abordagem extends Model
     protected $fillable = [
         'nome_abordagem',
         'tipo_abordagem',
-        'data_abordagem'
+        'data_abordagem',
+        'descricao',
     ];
 }

@@ -4,6 +4,13 @@
         <div class="h4">Criar novo cadastro</div>
         <hr class="border-bottom border-3 border-dark">
     </div>
+    @if ($errors->any())
+        <ul>
+            @foreach ($errors->all() as $error)
+                <li style="color:red">{{ $error }}</li>
+            @endforeach
+        </ul>
+    @endif
     <div class="form-container">
         <form action="{{ route('abordagem.store') }}" method="POST" enctype="multipart/form-data">
         @csrf
@@ -11,27 +18,27 @@
                 <div class="row">
                     <div class="col-md-3">
                         <label for="nome_cliente">Nome para a abordagem:</label>
-                        <input id="nome_cliente" name="nome_abordagem" value="{{$abordagem->}}" type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+                        <input id="nome_cliente" name="nome_abordagem" value="{{$abordagem->nome_abordagem}}" type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
                     </div>
                     <div class="col-md-3">
-                        <label for="exampleFormControlSelect1">Tipo de abordagem:</label>
-                        <select class="form-control" id="exampleFormControlSelect1">
-                            <option name="tipo_abordagem">1</option>
-                            <option name="tipo_abordagem">2</option>
-                            <option name="tipo_abordagem">3</option>
-                            <option name="tipo_abordagem">4</option>
-                            <option name="tipo_abordagem">5</option>
+                        <label for="tipo">Tipo de abordagem:</label>
+                        <select class="form-control" id="tipo">
+                            <option name="tipo_abordagem" value="{{$abordagem->tipo_abordagem}}">1</option>
+                            <option name="tipo_abordagem" value="{{$abordagem->tipo_abordagem}}">2</option>
+                            <option name="tipo_abordagem" value="{{$abordagem->tipo_abordagem}}">3</option>
+                            <option name="tipo_abordagem" value="{{$abordagem->tipo_abordagem}}">4</option>
+                            <option name="tipo_abordagem" value="{{$abordagem->tipo_abordagem}}">5</option>
                         </select>
                     </div>
                     <div class="col-md-3">
                         <label for="data">Data de realização:</label>
-                        <input id="data" name="data_abordagem" class="form-control datepicker" placeholder="Selecione a data" type="text" onfocus="focused(this)" onfocusout="defocused(this)">
+                        <input value="{{$abordagem->data_abordagem}}" id="data" name="data_abordagem" class="form-control datepicker" placeholder="Selecione a data" type="text" onfocus="focused(this)" onfocusout="defocused(this)">
                     </div>
                 </div>
                 <div class="row">
                     <div class="col-md-6">
-                        <label for="exampleFormControlTextarea1">Descrição da abordagem:</label>
-                        <textarea class="form-control" id="exampleFormControlTextarea1"></textarea>
+                        <label for="descricao">Descrição da abordagem:</label>
+                        <textarea name="descricao" class="form-control" id="descricao"></textarea>
                     </div>
                     <div class="col-md-3 mt-4">
                         <button type="submit" class="btn btn-info btn-lg align-itens-end">Adicionar</button>

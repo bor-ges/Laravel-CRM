@@ -14,15 +14,16 @@ class AbordagemController extends Controller
      */
     public function index()
     {
-        return view("gestao-oportunidade.abordagem");
+        $abordagem = DB::table('abordagens')->get();
+        return view("gestao-oportunidade.abordagem", compact('abordagem'));
     }
 
     /**
      * Show the form for creating a new resource.
      */
-    public function create()
+    public function create(Abordagem $abordagem)
     {
-        return view("gestao-oportunidade.abordagem-create");
+        return view("gestao-oportunidade.abordagem-create", compact('abordagem'));
     }
 
     /**
@@ -34,14 +35,16 @@ class AbordagemController extends Controller
             'nome_abordagem' => 'required|max:4294967295',
             'tipo_abordagem' => 'required|max:4294967295',
             'data_abordagem' => 'required|numeric|max:255',
+            'descricao' => 'required|max:4294967295',
         ]);
+        dd($request->all());
 
         $abordagem = new Abordagem();
 
         $abordagem->nome_abordagem = $validated['nome_abordagem'];
         $abordagem->tipo_abordagem = $validated['tipo_abordagem'];
         $abordagem->data_abordagem = Carbon::parse($validated['data_abordagem'])->format('Y/m/d');
-
+        $abordagem->descricao = $validated['descricao'];
 
         $abordagem->save();
 

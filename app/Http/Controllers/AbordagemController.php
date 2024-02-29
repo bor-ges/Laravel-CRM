@@ -14,7 +14,7 @@ class AbordagemController extends Controller
      */
     public function index()
     {
-        $abordagem = DB::table('abordagem')->get();
+        $abordagem = DB::table('abordagems')->get();
         return view("gestao-oportunidade.abordagem", compact('abordagem'));
     }
 

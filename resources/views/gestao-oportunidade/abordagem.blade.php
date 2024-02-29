@@ -62,7 +62,7 @@
                                 <th class="text-secondary opacity-7"></th>
                             </tr>
                             </thead>
-                            @foreach()
+
                             <tbody>
                             <tr>
                                 <td>
@@ -107,7 +107,7 @@
                                 </div>
                             </div>
                             </tbody>
-                            @endforeach
+
                         </table>
                     </div>
                 </div>

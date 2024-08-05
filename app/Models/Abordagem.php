@@ -8,10 +8,14 @@ use Illuminate\Database\Eloquent\Model;
 class Abordagem extends Model
 {
     use HasFactory;
+
+    protected $table = 'abordagens'; // Especifica o nome da tabela
+
     protected $fillable = [
-        'nome_abordagem',
-        'tipo_abordagem',
-        'data_abordagem',
+        'tipo',
+        'meio_contato',
         'descricao',
+        'arquivo_abordagem',
+        'objecao',
     ];
 }

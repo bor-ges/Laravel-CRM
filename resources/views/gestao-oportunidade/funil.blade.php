@@ -13,6 +13,18 @@
                 </div>
                 <div class="card-body">
                     <ul class="list-group" id="negociacao">
+                        <li class="list-group-item align-content-center" data-card-id="123" data-estado-atual="negociacao">
+                            Venda 1
+                            <button class="btn btn-primary btn-sm" data-card-id="123" data-estado-destino="aguardando">
+                                <i class='bx bxs-right-arrow'></i>
+                            </button>
+                        </li>
+                        <li class="list-group-item" data-card-id="456" data-estado-atual="negociacao">
+                            Venda 2
+                            <button class="btn btn-primary btn-sm" data-card-id="456" data-estado-destino="aguardando">
+                                <i class='bx bxs-right-arrow'></i>
+                            </button>
+                        </li>
                     </ul>
                 </div>
             </div>
@@ -41,66 +53,38 @@
         </div>
     </div>
 @push('js')
-<script>
+    <script>
+        $(document).ready(function() {
+            $('.btn-mover-card').click(function() {
+                var cardId = $(this).data('card-id');
+                var estadoDestino = $(this).data('estado-destino');
 
-//    // setTimeout(function() {
-//    //     location.reload()
-//    // },5000)
-//
-//    // Define template for individual card components
-//    const cardTemplate = (title, id) => `
-//    <li class="list-group-item kanban-card" data-card-id="<span class="math-inline">`+ id + `"\>
-//<span class\="card\-title"\></span>`+title+`</span>
-//        <button type="button" class="btn btn-sm btn-danger float-right remove-card">Excluir</button>
-//    </li>`;
-//
-//    // Function to add new cards
-//    $("#add-card").click(function() {
-//        var title = prompt("Digite o título do novo card:");
-//        if (title) {
-//
-//            const cardId = Math.random().toString(36).substring(2, 15);
-//
-//            // Create card element using template
-//            const cardElement = cardTemplate(title, cardId);
-//
-//            // Add card to the first column (To-Do) by default
-//            $("#to-do").append(cardElement);
-//
-//            // Enable drag-and-drop functionality (improved)
-//            $('.kanban-card').draggable({
-//                revert: true,
-//                containment: '.kanban-column',
-//                appendTo: '.kanban-column',
-//                helper: 'clone',
-//                start: function (event, ui) {
-//                    // Store original column ID before dragging
-//                    ui.helper.data('original-column', $(this).closest('.kanban-column').data('column-id'));
-//                },
-//                stop: function (event, ui) {
-//                    const droppedColumn = $(ui.helper).closest('.kanban-column');
-//                    const newColumnId = droppedColumn.data('column-id');
-//
-//                    // Update card status on server using AJAX (improved error handling)
-//                    // essa parte aq atualiza no banco então ja ta feito desse que eu peguei? +/-
-//                    $.ajax({
-//                        url: '/update-task-status',
-//                        type: 'POST', // Use POST for data updates
-//                        dataType: 'json', // Expect JSON response
-//                        data: {
-//                            cardId: $(this).data('card-id'),
-//                            newStatus: newColumnId
-//                        },
-//                        success: function (data) {
-//                            if (data.success) {
-//                                // Card status updated successfully
-//                                console.log('Card status updated:', data)
-//                            }
-//                        }
-//                    })
-//                }
-//            });
-//        }})
-</script>
+                $.ajax({
+                    url: '/funil/mover-card',
+                    method: 'POST',
+                    data: {
+                        card_id: cardId,
+                        estado_destino: estadoDestino
+                    },
+                    success: function(response) {
+                        if (response.success) {
+                            // Atualizar a lista de cards na tela
+                            $('#' + estadoDestino).append(
+                                '<li class="list-group-item" data-card-id="' + cardId + '">' + cardId + '</li>'
+                            );
+                            $('#' + $(this).data('estado-atual')).find('li[data-card-id="' + cardId + '"]').remove();
+                        } else {
+                            // Exibir mensagem de erro
+                            alert(response.message);
+                        }
+                    },
+                    error: function(xhr, status, error) {
+                        // Exibir mensagem de erro
+                        alert('Ocorreu um erro ao mover o card.');
+                    }
+                });
+            });
+        });
+    </script>
 @endpush
 @endsection

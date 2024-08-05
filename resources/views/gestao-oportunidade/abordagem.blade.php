@@ -4,6 +4,7 @@
         <div class="h4">Banco de Abordagens</div>
         <hr class="border-bottom border-3 border-dark">
     </div>
+    <form>
 
     <div class="row">
         <h5 class="mb-3 mt-3">Filtros de pesquisa</h5>
@@ -13,32 +14,31 @@
                 <div class="form-group">
                     <div class="input-group">
                         <span class="input-group-text text-body"><i class="fas fa-search" aria-hidden="true"></i></span>
-                        <input type="text" class="form-control" placeholder="Pesquisar por nome...">
+                        <input type="text" class="form-control" id="searchInput" placeholder="Pesquisar por nome...">
                     </div>
                 </div>
             </div>
 
             <div class="col-md-3 w-auto">
-                <a href="abordagem/create" type="button" class="btn btn-success">Adicionar novo item</a>
+                <a href="{{route('abordagem.create')}}" type="button" class="btn btn-success">Adicionar novo item</a>
             </div>
 
         </div>
-    <form>
-        <div class="row ">
-                <div class="col-md-3">
-                    <label for="exampleFormControlSelect1">Pesquisa por Tipo</label>
-                    <select class="form-control" id="exampleFormControlSelect1">
-                        <option>1</option>
-                        <option>2</option>
-                        <option>3</option>
-                        <option>4</option>
-                        <option>5</option>
-                    </select>
-                </div>
-                <div class="col-md-3">
-                    <label for="data">Pesquisa por Período</label>
-                    <input id="data" class="form-control datepicker" placeholder="Selecione a data" type="text" onfocus="focused(this)" onfocusout="defocused(this)">
-                </div>
+        <div class="row">
+            <div class="col-md-3">
+                <label for="filterByType">Pesquisa por Tipo</label>
+                <select class="form-control" id="filterByType">
+                    <option>1</option>
+                    <option>2</option>
+                    <option>3</option>
+                    <option>4</option>
+                    <option>5</option>
+                </select>
+            </div>
+            <div class="col-md-3">
+                <label for="searchByDate">Pesquisa por Período</label>
+                <input id="searchByDate" class="form-control datepicker" placeholder="Selecione a data" type="text" onfocus="focused(this)" onfocusout="defocused(this)">
+            </div>
         </div>
     </form>
     <div class="row">
@@ -64,52 +64,54 @@
                             </thead>
 
                             <tbody>
-                            <tr>
+                            @forelse ($abordagens as $abordagem) <tr>
                                 <td>
                                     <div class="d-flex px-2 py-1">
                                         <div class="d-flex flex-column justify-content-center">
-                                            <h6 class="mb-0 text-sm">QuickNet</h6>
-                                        </div>
+                                            <h6 class="mb-0 text-sm">{{ $abordagem->nome_abordagem }}</h6> </div>
                                     </div>
                                 </td>
                                 <td>
-                                    <p class="text-xs font-weight-bold mb-0">Infraestrutura</p>
-                                </td>
+                                    <p class="text-xs font-weight-bold mb-0">{{ $abordagem->tipo }}</p> </td>
                                 <td class="align-middle text-center">
-                                    <span class="text-secondary text-xs font-weight-bold">17/04/24</span>
-                                </td>
+                                    <span class="text-secondary text-xs font-weight-bold">{{ $abordagem->data_abordagem }}</span> </td>
                                 <td class="align-middle">
-                                    <a href="" class="text-secondary font-weight-bold text-xs" data-bs-toggle="modal" data-bs-target="#modal-default">
+                                    <a href="#" class="text-secondary font-weight-bold text-xs" data-bs-toggle="modal" data-bs-target="#modal-{{ $abordagem->id }}">
                                         Informações
                                     </a>
                                 </td>
                             </tr>
-                            <div class="modal fade" id="modal-default" tabindex="-1" role="dialog" aria-labelledby="modal-default" aria-hidden="true">
-                                <div class="modal-dialog modal- modal-dialog-centered modal-" role="document">
+
+                            <div class="modal fade" id="modal-{{ $abordagem->id }}" tabindex="-1" role="dialog" aria-labelledby="modal-title-{{ $abordagem->id }}" aria-hidden="true">
+                                <div class="modal-dialog modal-modal-dialog-centered modal-" role="document">
                                     <div class="modal-content">
                                         <div class="modal-header">
-                                            <h6 class="modal-title" id="modal-title-default">Informações</h6>
+                                            <h6 class="modal-title" id="modal-title-{{ $abordagem->id }}">Informações</h6>
                                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
                                                 <span aria-hidden="true">×</span>
                                             </button>
                                         </div>
                                         <div class="modal-body">
-                                            <!-- Adicionando campos no corpo do modal -->
-                                            <p><strong>Nome:</strong> teste</p>
-                                            <p><strong>Tipo:</strong> teste</p>
-                                            <p><strong>Data de Realização:</strong> teste</p>
-                                            <p><strong>Descrição:</strong> teste</p>
-                                        </div>
+                                            <p><strong>Nome:</strong> {{ $abordagem->nome_abordagem }}</p>
+                                            <p><strong>Tipo:</strong> {{ $abordagem->tipo }}</p>
+                                            <p><strong>Data de Realização:</strong> {{ $abordagem->data_abordagem }}</p>
+                                            <p><strong>Descrição:</strong> {{ $abordagem->descricao }}</p> </div>
+                                            <p><strong>Anexos:</strong> <a href="{{$abordagem->arquivo_abordagem}}"> Abrir PDF</a></p>
                                         <div class="modal-footer">
                                             <button type="button" class="btn btn-danger  ml-auto" data-bs-dismiss="modal">Fechar</button>
                                         </div>
                                     </div>
                                 </div>
                             </div>
+                            @empty
+                                <tr>
+                                    <td colspan="4" class="text-center">Nenhum dado encontrado</td>
+                                </tr>
+                            @endforelse
                             </tbody>
-
                         </table>
                     </div>
+
                 </div>
             </div>
         </div>
@@ -122,44 +124,51 @@
                 mode: "range"
             });
         }
+
+        //filtrar por nome
+        document.getElementById('searchInput').addEventListener('input', function() {
+            const searchText = this.value.toLowerCase();
+            const rows = document.querySelectorAll('tbody tr');
+
+            rows.forEach(row => {
+                const name = row.querySelector('h6').textContent.toLowerCase();
+                if (name.includes(searchText)) {
+                    row.style.display = '';
+                } else {
+                    row.style.display = 'none';
+                }
+            });
+        });
+
+        // Filtrar por tipo
+        document.getElementById('filterByType').addEventListener('change', function() {
+            const selectedType = this.value;
+            const rows = document.querySelectorAll('tbody tr');
+
+            rows.forEach(row => {
+                const type = row.querySelector('.text-xs').textContent;
+                if (selectedType === 'all' || type === selectedType) {
+                    row.style.display = '';
+                } else {
+                    row.style.display = 'none';
+                }
+            });
+        });
+
+        // Filtrar por data
+        document.getElementById('searchByDate').addEventListener('input', function() {
+            const searchDate = this.value.toLowerCase();
+            const rows = document.querySelectorAll('tbody tr');
+
+            rows.forEach(row => {
+                const date = row.querySelector('.text-secondary').textContent.toLowerCase();
+                if (date.includes(searchDate)) {
+                    row.style.display = '';
+                } else {
+                    row.style.display = 'none';
+                }
+            });
+        });
     </script>
 @endpush
 @endsection
-
-
-
-{{--@foreach ($suaColecaoDeDados as $item)--}}
-{{--    <tr>--}}
-{{--        <!-- ... Suas células de tabela ... -->--}}
-{{--        <td class="align-middle">--}}
-{{--            <!-- Link "Informações" com atributos data-bs-toggle e data-bs-target -->--}}
-{{--            <a data-bs-toggle="modal" data-bs-target="#modal-{{ $item->id }}" class="text-secondary font-weight-bold text-xs" data-toggle="tooltip" data-original-title="Edit user">--}}
-{{--                Informações--}}
-{{--            </a>--}}
-{{--        </td>--}}
-{{--    </tr>--}}
-
-{{--    <!-- Modal correspondente a esta entrada do loop -->--}}
-{{--    <div class="modal fade" id="modal-{{ $item->id }}" tabindex="-1" role="dialog" aria-labelledby="modal-title-{{ $item->id }}" aria-hidden="true">--}}
-{{--        <div class="modal-dialog modal- modal-dialog-centered modal-" role="document">--}}
-{{--            <div class="modal-content">--}}
-{{--                <div class="modal-header">--}}
-{{--                    <h6 class="modal-title" id="modal-title-default">Informações</h6>--}}
-{{--                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">--}}
-{{--                        <span aria-hidden="true">×</span>--}}
-{{--                    </button>--}}
-{{--                </div>--}}
-{{--                <div class="modal-body">--}}
-{{--                    <!-- Adicionando campos no corpo do modal -->--}}
-{{--                    <p><strong>Nome:</strong> {{ $item->nome }}</p>--}}
-{{--                    <p><strong>Tipo:</strong> {{ $item->tipo }}</p>--}}
-{{--                    <p><strong>Descrição:</strong> {{ $item->descricao }}</p>--}}
-{{--                    <p><strong>Data de Realização:</strong> {{ $item->dataRealizacao }}</p>--}}
-{{--                </div>--}}
-{{--                <div class="modal-footer">--}}
-{{--                    <button type="button" class="btn btn-danger ml-auto" data-bs-dismiss="modal">Fechar</button>--}}
-{{--                </div>--}}
-{{--            </div>--}}
-{{--        </div>--}}
-{{--    </div>--}}
-{{--@endforeach--}}

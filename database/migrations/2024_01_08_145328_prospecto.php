@@ -13,15 +13,19 @@ return new class extends Migration
     {
         Schema::create('prospectos', function (Blueprint $table) {
             $table->id();
-            $table->string('nome_cliente');
-            $table->string('conhecimento');
-            $table->string('origem');
-            $table->string('nome_oportunidade');
-            $table->string('tipo_oportunidade');
-            $table->dateTime('data');
-            $table->string('estimado');
-            $table->string('probabilidade');
-            $table->string('proximo');
+            $table->string('cliente');
+            $table->string('id_cliente')->autoIncrement();
+            $table->string('descr_cliente');
+            $table->string('descr_projeto');
+            $table->string('valor_estimado');
+            $table->string('descr_dores');
+            $table->date('data_contato');
+            $table->string('indicacao');
+            $table->string('chance_convercao');
+            $table->string('situacao');
+            $table->string('motivo');
+            $table->date('data_reabordar');
+            $table->boolean('confidencial');
             $table->timestamps();
         });
     }

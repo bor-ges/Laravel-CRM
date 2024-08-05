@@ -1,0 +1,87 @@
+h6 {
+    margin: 0px;
+}
+
+.obras-card {
+    transition: .3s;
+    color: #344767;
+    font-size: 16px;
+    font-weight: 600;
+}
+
+.card-recents {
+    height: 400px;
+    overflow: hidden;
+}
+
+.obras-card-detail {
+    transition: .3s;
+    color: #344767;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.obras-card-detail:hover{
+    transition: .3s;
+    color: #3f51b5;
+    box-shadow: 0 10px 20px 0 #3f51b525;
+    transform: scale(1.03);
+}
+
+.detail-card-icon {
+    font-size: 18px;
+    position: absolute;
+    bottom: 21px;
+    right: 25px;
+}
+
+.table thead th {
+    padding: 12px;
+}
+
+tr {
+    border-bottom: 1px solid #e9ecef;
+}
+
+td a {
+    text-decoration: underline;
+}
+
+.progress-bar {
+    height: 15px;
+}
+
+
+.modal-dialog {
+    max-width: 1440px;
+    margin: 1.75rem auto;
+}
+
+.dropdown-toggle::after {
+    display: none;
+
+}
+
+.bx-dots-horizontal-rounded {
+    cursor: pointer;
+    transition: .2s;
+}
+
+.bx-dots-horizontal-rounded:hover {
+    transform: scale(1.12);
+    transition: .2s;
+}
+
+.dropend .dropdown-toggle:after {
+    display: none;
+}
+
+.dropdown-item {
+    text-decoration: none;
+}
+
+
+.card .card-header {
+    padding: 1rem;
+}

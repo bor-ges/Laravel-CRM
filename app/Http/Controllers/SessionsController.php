@@ -17,25 +17,25 @@ class SessionsController extends Controller
     {
         $attributes = request()->validate([
             'email'=>'required|email',
-            'password'=>'required' 
+            'password'=>'required'
         ]);
 
         if(Auth::attempt($attributes))
         {
             session()->regenerate();
-            return redirect('dashboard')->with(['success'=>'You are logged in.']);
+            return redirect('/')->with(['success'=>'Você entrou com sucesso.']);
         }
         else{
 
-            return back()->withErrors(['email'=>'Email or password invalid.']);
+            return back()->withErrors(['email'=>'Email ou senha invalidos.']);
         }
     }
-    
+
     public function destroy()
     {
 
         Auth::logout();
 
-        return redirect('/login')->with(['success'=>'You\'ve been logged out.']);
+        return redirect('/login')->with(['success'=>'Você saiu com sucesso.']);
     }
 }

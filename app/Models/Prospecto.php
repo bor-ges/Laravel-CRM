@@ -9,15 +9,19 @@ class Prospecto extends Model
 {
     use HasFactory;
     protected $fillable = [
-        'nome_cliente',
-        'conhecimento',
-        'origem',
-        'nome_oportunidade',
-        'tipo_oportunidade',
-        'data',
-        'estimado',
-        'probabilidade',
-        'proximo',
+        'cliente',
+        'id_cliente',
+        'descr_cliente',
+        'descr_projeto',
+        'valor_estimado',
+        'descr_dores',
+        'data_contato',
+        'indicacao',
+        'chance_convercao',
+        'situacao',
+        'motivo',
+        'data_reabordar',
+        'confidencial',
     ];
 
     /**
@@ -25,4 +29,20 @@ class Prospecto extends Model
      *
      * @var array<int, string>
      */
+}
+
+class Card extends Model
+{
+    use HasFactory;
+
+    protected $fillable = [
+        'nome',
+        'estado',
+        'prospecto_id',
+    ];
+
+    public function prospecto()
+    {
+        return $this->belongsTo(Prospecto::class);
+    }
 }

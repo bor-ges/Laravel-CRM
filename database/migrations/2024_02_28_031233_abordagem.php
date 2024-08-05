@@ -11,12 +11,15 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('abordagems', function (Blueprint $table) {
+        Schema::create('abordagens', function (Blueprint $table) {
             $table->id();
             $table->string('nome_abordagem');
-            $table->string('tipo_abordagem');
-            $table->dateTime('data_abordagem');
-            $table->longText('descricao');
+            $table->string('tipo');
+            $table->string('meio_contato');
+            $table->date('data_abordagem');
+            $table->string('descricao');
+            $table->string('arquivo_abordagem');
+            $table->string('objecao');
             $table->timestamps();
         });
     }
@@ -26,6 +29,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('prospectos');
+        Schema::dropIfExists('abordagems');
     }
 };

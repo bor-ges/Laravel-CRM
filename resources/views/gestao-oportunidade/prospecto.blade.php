@@ -16,67 +16,84 @@
 <div class="row">
     <h5 class="mb-3 mt-3">Dados do Cliente:</h5>
     <div class="container form-group">
-        <form action="{{ route('prospecto.store') }}" method="POST">
-            @csrf
-            <div class="card p-3">
-            <div class="row">
-                <div class="col-md-3">
-                    <label for="nome_cliente">Nome do Cliente:</label>
-                    <input name="nome_cliente" id="nome_cliente" value="{{$prospecto->nome_cliente}}" type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
-                </div>
+        <div>
+            <form action="{{ route('prospecto.store') }}" method="POST">
+                @csrf
+                <div class="card p-3">
+                    <div class="row">
+                        <div class="col-md-3">
+                            <label for="cliente">Nome do Cliente:</label>
+                            <input name="cliente" id="cliente" value="{{$prospecto->cliente}}" type="text" class="form-control">
+                        </div>
 
-                <div class="col-md-3">
-                        <label for="conhecimento">Conhecimento sobre o cliente:</label>
-                    <input name="conhecimento" id="conhecimento" value="{{$prospecto->conhecimento}}" type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
-                </div>
+                        <div class="col-md-3">
+                            <label for="descr_cliente">Descrição sobre o Cliente:</label>
+                            <input name="descr_cliente" id="descr_cliente" value="{{$prospecto->descr_cliente}}" type="text" class="form-control">
+                        </div>
 
-                <div class="col-md-6">
-                    <label for="descricao">Origem da oportunidade:</label>
-                    <input name="origem" id="descricao" value="{{$prospecto->origem}}" type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
-                </div>
+                        <div class="col-md-6">
+                            <label for="indicacao">Origem da Oportunidade:</label>
+                            <input name="indicacao" id="indicacao" value="{{$prospecto->indicacao}}" type="text" class="form-control">
+                        </div>
+                    </div>
 
-            </div>
-            <h5 class="mb-3 mt-3">Dados da Oportunidade:</h5>
-            <div class="row">
-                <div class="col-md-4">
-                    <label for="oportunidade">Nome da oportunidade:</label>
-                    <input name="nome_oportunidade" id="oportunidade" value="{{$prospecto->nome_oportunidade}}" type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+                    <h5 class="mb-3 mt-3">Dados da Oportunidade:</h5>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <label for="descr_projeto">Nome da Oportunidade (Descrição do Projeto):</label>
+                            <input name="descr_projeto" id="descr_projeto" value="{{$prospecto->descr_projeto}}" type="text" class="form-control">
+                        </div>
+                        <div class="col-md-3">
+                            <label for="data_contato">Data de Contato:</label>
+                            <input name="data_contato" id="data_contato" value="{{$prospecto->data_contato}}" class="form-control datepicker" type="text">
+                        </div>
+                        <div class="col-md-3">
+                            <label for="valor_estimado">Valor Estimado:</label>
+                            <input name="valor_estimado" id="valor_estimado" value="{{$prospecto->valor_estimado}}" type="text" class="form-control">
+                        </div>
+                    </div>
+                    <div class="row mt-2">
+                        <div class="col-md-3">
+                            <label for="chance_conversao">Chance de conversão:</label>
+                            <input name="chance_conversao" id="chance_conversao" value="{{$prospecto->chance_conversao}}" type="text" class="form-control">
+                        </div>
+                        <div class="col-md-3">
+                            <label for="situacao">Situação:</label>
+                            <input name="situacao" id="situacao" value="{{$prospecto->situacao}}" type="text" class="form-control">
+                        </div>
+                        <div class="col-md-3">
+                            <label for="descr_dores">Descrição das Dores:</label>
+                            <input name="descr_dores" id="descr_dores" value="{{$prospecto->descr_dores}}" type="text" class="form-control">
+                        </div>
+                        <div class="col-md-3">
+                            <label for="motivo">Motivo:</label>
+                            <input name="motivo" id="motivo" value="{{$prospecto->motivo}}" type="text" class="form-control">
+                        </div>
+                    </div>
+                    <div class="row mt-2">
+
+                        <div class="col-md-3">
+                            <label for="data_reabordar">Data para reabordagem:</label>
+                            <input name="data_reabordar" id="data_reabordar" value="{{$prospecto->data_reabordar}}" type="text" class="form-control datepicker">
+                        </div>
+                        <div class="col-md-3">
+                            <label for="confidencial">É confidencial:</label>
+                            <select class="form-control" id="confidencial" name="confidencial">
+                                <option value="1">Sim</option>
+                                <option value="0">Não</option>
+                            </select>
+                        </div>
+                        <div class="col-md-4 mt-4">
+                            <button type="submit" class="btn btn-info btn-lg">Confirmar cadastro</button>
+                        </div>
+                    </div>
                 </div>
-                <div class="col-md-2">
-                    <label for="tipo_oportunidade">Tipo da oportunidade:</label>
-                    <input name="tipo_oportunidade" id="tipo_oportunidade" value="{{$prospecto->tipo_oportunidade}}" type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
-                </div>
-                <div class="col-md-3">
-                    <label for="datepick">Data inicio e fim:</label>
-                    <input name="data" id="datepick" value="{{$prospecto->data}}" class="form-control datepicker" placeholder="Please select date" type="text" onfocus="focused(this)" onfocusout="defocused(this)">
-                </div>
-                <div class="col-md-3">
-                    <label for="valor_estimado">Valor Estimado:</label>
-                    <input name="estimado" id="valor_estimado" value="{{$prospecto->estimado}}" type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
-                </div>
-            </div>
-            <div class="row mt-2">
-                <div class="col-md-3">
-                    <label for="prob_fechamento">Probabilidade de fechamento:</label>
-                    <input name="probabilidade" id="prob_fechamento" value="{{$prospecto->probabilidade}}" type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
-                </div>
-                <div class="col-md-3">
-                    <label for="proximo_passo">Proximo passo:</label>
-                    <input name="proximo" id="proximo" value="{{$prospecto->proximo}}" type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
-                </div>
-                <div class="col-md-4 mt-4">
-                    <button type="submit" class="btn btn-info btn-lg align-itens-end">Confirmar cadastro</button>
-                </div>
-            </div>
-            </div>
-        </form>
-    </div>
-</div>
+            </form>
+        </div>
 @push('js')
     <script>
         if (document.querySelector('.datepicker')) {
             flatpickr('.datepicker', {
-                mode: "range"
             });
         }
     </script>
